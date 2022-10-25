@@ -72,7 +72,26 @@ public class NombresRomainsTest {
                 ConvertisseurNombresRomains
                         .Convertir(9);
 
-        // ALORS on obtient 'IV'
+        // ALORS on obtient 'IX'
         assertEquals("IX", resultat);
+    }
+
+    @DisplayName(
+            "ETANT DONNE un convertisseur de nombres romains " +
+                    "QUAND on lui donne le nombre <nombreArabe> entre 10 et 13 " +
+                    "ALORS on obtient 'X' plus <nombreArabe - 10> fois 'I'"
+    )
+    @ParameterizedTest
+    @ShortRangeSource(from = 10, to = 13, closed = true)
+    public void TestDixPlusUnités(short nombreArabe) throws Exception {
+        // ETANT DONNE un convertisseur de nombres romains
+        // QUAND on lui donne le nombre <nombreArabe>
+        var resultat =
+                ConvertisseurNombresRomains
+                        .Convertir(nombreArabe);
+
+        // ALORS on obtient 'X' plus <nombreArabe - 10> fois 'I'
+        var attendu = "X" + "I".repeat(nombreArabe - 10);
+        assertEquals(attendu, resultat);
     }
 }

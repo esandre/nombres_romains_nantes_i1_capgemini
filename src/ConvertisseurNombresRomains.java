@@ -3,14 +3,18 @@ public abstract class ConvertisseurNombresRomains {
     Convertir(int nombreArabe)
             throws Exception {
         if(nombreArabe <= 3)
-            return "I".repeat(nombreArabe);
+            return CaracteresRomains.Zero.ReprésenterSuiteNombre(nombreArabe);
 
         if(nombreArabe == 4) return "IV";
 
         if(nombreArabe <= 8)
-            return "V" + "I".repeat(nombreArabe - 5);
+            return CaracteresRomains.V.ReprésenterSuiteNombre(nombreArabe);
 
         if(nombreArabe == 9) return "IX";
+        if(nombreArabe == 10) return "X";
+
+        if(nombreArabe <= 13)
+            return CaracteresRomains.X.ReprésenterSuiteNombre(nombreArabe);
 
         throw new Exception();
     }
