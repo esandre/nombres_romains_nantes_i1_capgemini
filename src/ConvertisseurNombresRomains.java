@@ -11,10 +11,17 @@ public abstract class ConvertisseurNombresRomains {
             return CaracteresRomains.V.ReprésenterSuiteNombre(nombreArabe);
 
         if(nombreArabe == 9) return "IX";
-        if(nombreArabe == 10) return "X";
 
         if(nombreArabe <= 13)
             return CaracteresRomains.X.ReprésenterSuiteNombre(nombreArabe);
+
+        if(nombreArabe == 14) return "XIV";
+
+        if(nombreArabe <= 18)
+            return CaracteresRomains.XV.ReprésenterSuiteNombre(nombreArabe);
+
+        if(nombreArabe == 19) return "XIX";
+        if(nombreArabe == 20) return "XX";
 
         throw new Exception();
     }

@@ -94,4 +94,71 @@ public class NombresRomainsTest {
         var attendu = "X" + "I".repeat(nombreArabe - 10);
         assertEquals(attendu, resultat);
     }
+
+    @Test
+    @DisplayName(
+            "ETANT DONNE un convertisseur de nombres romains " +
+                    "QUAND on lui donne le nombre 14 " +
+                    "ALORS on obtient 'XIV'")
+    public void Test14() throws Exception {
+        // ETANT DONNE un convertisseur de nombres romains
+        // QUAND on lui donne le nombre 14
+        var resultat =
+                ConvertisseurNombresRomains
+                        .Convertir(14);
+
+        // ALORS on obtient 'XIV'
+        assertEquals("XIV", resultat);
+    }
+
+    @DisplayName(
+            "ETANT DONNE un convertisseur de nombres romains " +
+                    "QUAND on lui donne le nombre <nombreArabe> entre 15 et 18 " +
+                    "ALORS on obtient 'XV' plus <nombreArabe - 15> fois 'I'"
+    )
+    @ParameterizedTest
+    @ShortRangeSource(from = 15, to = 18, closed = true)
+    public void TestQuinzePlusUnités(short nombreArabe) throws Exception {
+        // ETANT DONNE un convertisseur de nombres romains
+        // QUAND on lui donne le nombre <nombreArabe>
+        var resultat =
+                ConvertisseurNombresRomains
+                        .Convertir(nombreArabe);
+
+        // ALORS on obtient 'XV' plus <nombreArabe - 15> fois 'I'
+        var attendu = "XV" + "I".repeat(nombreArabe - 15);
+        assertEquals(attendu, resultat);
+    }
+
+    @Test
+    @DisplayName(
+            "ETANT DONNE un convertisseur de nombres romains " +
+                    "QUAND on lui donne le nombre 19 " +
+                    "ALORS on obtient 'XIX'")
+    public void Test19() throws Exception {
+        // ETANT DONNE un convertisseur de nombres romains
+        // QUAND on lui donne le nombre 19
+        var resultat =
+                ConvertisseurNombresRomains
+                        .Convertir(19);
+
+        // ALORS on obtient 'XIX'
+        assertEquals("XIX", resultat);
+    }
+
+    @Test
+    @DisplayName(
+            "ETANT DONNE un convertisseur de nombres romains " +
+                    "QUAND on lui donne le nombre 20 " +
+                    "ALORS on obtient 'XX'")
+    public void Test20() throws Exception {
+        // ETANT DONNE un convertisseur de nombres romains
+        // QUAND on lui donne le nombre 20
+        var resultat =
+                ConvertisseurNombresRomains
+                        .Convertir(20);
+
+        // ALORS on obtient 'XX'
+        assertEquals("XX", resultat);
+    }
 }
