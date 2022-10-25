@@ -21,7 +21,8 @@ public class NombresRomainsTest {
                         .Convertir(nombreArabe);
 
         // ALORS on obtient <nombreArabe> fois 'I'
-        assertEquals("I".repeat(nombreArabe), resultat);
+        var attendu = "I".repeat(nombreArabe);
+        assertEquals(attendu, resultat);
     }
 
     @Test
@@ -40,19 +41,38 @@ public class NombresRomainsTest {
         assertEquals("IV", resultat);
     }
 
+    @DisplayName(
+            "ETANT DONNE un convertisseur de nombres romains " +
+                    "QUAND on lui donne le nombre <nombreArabe> entre 5 et 8 " +
+                    "ALORS on obtient 'V' plus <nombreArabe - 5> fois 'I'"
+    )
+    @ParameterizedTest
+    @ShortRangeSource(from = 5, to = 8, closed = true)
+    public void TestCinqPlusUnités(short nombreArabe) throws Exception {
+        // ETANT DONNE un convertisseur de nombres romains
+        // QUAND on lui donne le nombre <nombreArabe>
+        var resultat =
+                ConvertisseurNombresRomains
+                        .Convertir(nombreArabe);
+
+        // ALORS on obtient 'V' plus <nombreArabe - 5> fois 'I'
+        var attendu = "V" + "I".repeat(nombreArabe - 5);
+        assertEquals(attendu, resultat);
+    }
+
     @Test
     @DisplayName(
             "ETANT DONNE un convertisseur de nombres romains " +
-            "QUAND on lui donne le nombre 5 " +
-            "ALORS on obtient 'V'")
-    public void Test5() throws Exception {
+                    "QUAND on lui donne le nombre 9 " +
+                    "ALORS on obtient 'IX'")
+    public void Test9() throws Exception {
         // ETANT DONNE un convertisseur de nombres romains
-        // QUAND on lui donne le nombre 5
+        // QUAND on lui donne le nombre 9
         var resultat =
                 ConvertisseurNombresRomains
-                        .Convertir(4);
+                        .Convertir(9);
 
-        // ALORS on obtient 'V'
-        assertEquals("V", resultat);
+        // ALORS on obtient 'IV'
+        assertEquals("IX", resultat);
     }
 }

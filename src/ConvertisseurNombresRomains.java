@@ -7,6 +7,11 @@ public abstract class ConvertisseurNombresRomains {
 
         if(nombreArabe == 4) return "IV";
 
+        if(nombreArabe <= 8)
+            return "V" + "I".repeat(nombreArabe - 5);
+
+        if(nombreArabe == 9) return "IX";
+
         throw new Exception();
     }
 }
